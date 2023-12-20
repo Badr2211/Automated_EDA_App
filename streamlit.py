@@ -171,7 +171,7 @@ if choice== "📋Basic Information And Statistics":
     st.dataframe(df.sample())
     
     st.header("2-Exploratory each feature")
-    st.dataframe(feature_insight(df.astype(str),target))
+    #st.dataframe(feature_insight(df,target))
     
     st.header('3-Statistics')
     st.dataframe(df.describe())
