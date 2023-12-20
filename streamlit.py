@@ -146,7 +146,7 @@ def pairplot(df):
     #   Display the plot in Streamlit
     st.pyplot(fig)
         
-st.set_page_config(page_title="Explore Your D0ataset", page_icon= ':bar_chart:',                   layout="wide",  
+st.set_page_config(page_title="Explore Your Dataset", page_icon= '📊',                   layout="wide",  
                     initial_sidebar_state="expanded")
 
 
@@ -185,10 +185,10 @@ if choice == "📊EDA":
 
 
     st.header("2-Correlation Map")
-    #corrplot(df)
+    corrplot(df)
    
     st.header("2-Pair Plot")
-    #pairplot(df)
+    pairplot(df)
 if choice =="🎮Play With Feature Visulaizations":
     #with st.sidebar:
     #st.image("https://th.bing.com/th/id/OIP.n6a3CTjh1hTTDlLPnSAEKAHaBA?rs=1&pid=ImgDetMain")
