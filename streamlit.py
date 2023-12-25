@@ -1,6 +1,4 @@
 import plotly.express as px
-
-from distutils.sysconfig import BASE_EXEC_PREFIX
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt 
@@ -146,7 +144,7 @@ def pairplot(df):
     #   Display the plot in Streamlit
     st.pyplot(fig)
         
-st.set_page_config(page_title="Explore Your Dataset", page_icon= '📊',                   layout="wide",  
+st.set_page_config(page_title="Explore Your D0ataset", page_icon= ':bar_chart:',                   layout="wide",  
                     initial_sidebar_state="expanded")
 
 
@@ -171,7 +169,7 @@ if choice== "📋Basic Information And Statistics":
     st.dataframe(df.sample())
     
     st.header("2-Exploratory each feature")
-    #st.dataframe(feature_insight(df,target))
+    st.dataframe(feature_insight(df,target))
     
     st.header('3-Statistics')
     st.dataframe(df.describe())
@@ -185,10 +183,10 @@ if choice == "📊EDA":
 
 
     st.header("2-Correlation Map")
-    corrplot(df)
+    #corrplot(df)
    
     st.header("2-Pair Plot")
-    pairplot(df)
+    #pairplot(df)
 if choice =="🎮Play With Feature Visulaizations":
     #with st.sidebar:
     #st.image("https://th.bing.com/th/id/OIP.n6a3CTjh1hTTDlLPnSAEKAHaBA?rs=1&pid=ImgDetMain")
