@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 import seaborn as sns 
 import warnings
+import numpy as np
 from pandas.plotting import scatter_matrix
 
 # Ignore all warnings
@@ -144,7 +145,42 @@ def pairplot(df):
     #   Display the plot in Streamlit
     st.pyplot(fig)
         
-st.set_page_config(page_title="Explore Your D0ataset", page_icon= ':bar_chart:',                   layout="wide",  
+def group(data, g_based,agg):
+    
+    # Specify multiple aggregation functions
+    fun = {
+        'mean': np.mean,
+        'sum': np.sum,
+        'min': np.min,
+        'max': np.max
+    }
+
+    # Perform groupby and calculate multiple aggregations
+    g = data.groupby(g_based, as_index=False).agg(fun[agg])
+    # Create pivot table
+    pivot = g.pivot(index=g_based[0],columns=g_based[1])
+    return g , pivot
+
+def drawpivot (pivot):
+    fig, ax = plt.subplots()
+    cmap = plt.get_cmap('RdBu')
+    cmap.set_bad(color='black')
+    im = ax.pcolor(pivot, cmap=cmap)
+
+    row_labels =pivot.columns.levels[1]
+    col_labels = pivot.index
+
+    ax.set_xticks(np.arange(pivot.shape[1]) + 0.5, minor=False)
+    ax.set_yticks(np.arange(pivot.shape[0]) + 0.5, minor=False)
+
+    ax.set_xticklabels(row_labels, minor=False)
+    ax.set_yticklabels(col_labels, minor=False)
+
+    plt.xticks(rotation=90)
+
+    fig.colorbar(im)   
+    return fig
+st.set_page_config(page_title="Explore Your Dataset", page_icon= ':bar_chart:',                   layout="wide",  
                     initial_sidebar_state="expanded")
 
 
@@ -159,7 +195,7 @@ with st.sidebar:
     num_f=num(df)
     target=st.selectbox("Target Column:",df.columns[::-1])
 
-    choice = st.radio("Navigation", ["📋Basic Information And Statistics","📊EDA",'🎮Play With Feature Visulaizations'])
+    choice = st.radio("Navigation", ["📋Basic Information And Statistics","📊General EDA",'🎮Play With Feature Visulaizations'])
 
 
 if choice== "📋Basic Information And Statistics":
@@ -173,9 +209,17 @@ if choice== "📋Basic Information And Statistics":
     
     st.header('3-Statistics')
     st.dataframe(df.describe())
-        
+    
+    st.header('4-Groupby & Pinvot Plot')
 
-if choice == "📊EDA":
+    g1=st.selectbox("1-Select featue 1",cat_f )
+    g2=st.selectbox("1-Select featue 2",set(cat_f)-set([g1]))
+    k=[g1,g2]
+    g,p=group(df[[g1,g2,'tenure']],k,'mean')   
+    st.dataframe(g)   
+    #st.plotly_chart(    drawpivot(p)   )  
+    st.pyplot(drawpivot(p))
+if choice == "📊General EDA":
     st.title('Exploratory Data analysis')
     st.image('https://th.bing.com/th/id/OIP.I9CAlMorFphXUKDzzIVqRgHaD4?rs=1&pid=ImgDetMain')
     st.header("1-Target analysis")
@@ -183,10 +227,10 @@ if choice == "📊EDA":
 
 
     st.header("2-Correlation Map")
-    #corrplot(df)
+    corrplot(df)
    
     st.header("2-Pair Plot")
-    #pairplot(df)
+    pairplot(df)
 if choice =="🎮Play With Feature Visulaizations":
     #with st.sidebar:
     #st.image("https://th.bing.com/th/id/OIP.n6a3CTjh1hTTDlLPnSAEKAHaBA?rs=1&pid=ImgDetMain")
