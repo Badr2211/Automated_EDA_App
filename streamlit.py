@@ -227,10 +227,10 @@ if choice == "📊General EDA":
 
 
     st.header("2-Correlation Map")
-    corrplot(df)
+    #corrplot(df)
    
     st.header("2-Pair Plot")
-    pairplot(df)
+    #pairplot(df)
 if choice =="🎮Play With Feature Visulaizations":
     #with st.sidebar:
     #st.image("https://th.bing.com/th/id/OIP.n6a3CTjh1hTTDlLPnSAEKAHaBA?rs=1&pid=ImgDetMain")
