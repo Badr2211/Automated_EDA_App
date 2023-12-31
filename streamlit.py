@@ -212,13 +212,21 @@ if choice== "📋Basic Information And Statistics":
     st.dataframe(df.describe())
     
     st.header('4-Groupby & Pinvot Plot')
-
-    g1=st.selectbox("1-Select featue 1",cat_f )
-    g2=st.selectbox("1-Select featue 2",set(cat_f)-set([g1]))
+    col1 ,col2,col3,col4 =st.columns([.5,.5,.5,.5])
+        with col1:
+            g1=st.selectbox("1-Select categotical featue 1",cat_f )
+        with col2:
+            g2=st.selectbox("1-Select categotical featue 2",set(cat_f)-set([g1]))
+        with col3:
+            val=st.selectbox("1-Select numerical featue",set(num_f))
+        with col4:
+            agg=st.selectbox("1-Select aggregation fun",set(['mean','sum','min','max']))
+        
     k=[g1,g2]
-    g,p=group(df[[g1,g2,'tenure']],k,'mean')   
+
+    g,p=group(df[[g1,g2,val]],k,agg)  
     st.dataframe(g)   
-    st.plotly_chart(    drawpivot(p)   )  
+    
     st.pyplot(drawpivot(p))
 if choice == "📊General EDA":
     st.title('Exploratory Data analysis')
