@@ -218,7 +218,7 @@ if choice== "📋Basic Information And Statistics":
     k=[g1,g2]
     g,p=group(df[[g1,g2,'tenure']],k,'mean')   
     st.dataframe(g)   
-    #st.plotly_chart(    drawpivot(p)   )  
+    st.plotly_chart(    drawpivot(p)   )  
     st.pyplot(drawpivot(p))
 if choice == "📊General EDA":
     st.title('Exploratory Data analysis')
@@ -228,7 +228,7 @@ if choice == "📊General EDA":
 
 
     st.header("2-Correlation Map")
-    # corrplot(df)
+    corrplot(df)
    
     st.header("2-Pair Plot")
     #pairplot(df)
