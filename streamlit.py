@@ -177,7 +177,7 @@ def drawpivot (pivot):
     ax.set_xticklabels(row_labels, minor=False)
     ax.set_yticklabels(col_labels, minor=False)
 
-    plt.xticks(rotation=90)
+    plt.xticks(rotation=70)
 
     fig.colorbar(im)   
     return fig
