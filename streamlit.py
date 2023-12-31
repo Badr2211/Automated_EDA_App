@@ -213,14 +213,14 @@ if choice== "📋Basic Information And Statistics":
     
     st.header('4-Groupby & Pinvot Plot')
     col1 ,col2,col3,col4 =st.columns([.5,.5,.5,.5])
-        with col1:
-            g1=st.selectbox("1-Select categotical featue 1",cat_f )
-        with col2:
-            g2=st.selectbox("1-Select categotical featue 2",set(cat_f)-set([g1]))
-        with col3:
-            val=st.selectbox("1-Select numerical featue",set(num_f))
-        with col4:
-            agg=st.selectbox("1-Select aggregation fun",set(['mean','sum','min','max']))
+    with col1:
+        g1=st.selectbox("1-Select categotical featue 1",cat_f )
+    with col2:
+        g2=st.selectbox("1-Select categotical featue 2",set(cat_f)-set([g1]))
+    with col3:
+        val=st.selectbox("1-Select numerical featue",set(num_f))
+    with col4:
+        agg=st.selectbox("1-Select aggregation fun",set(['mean','sum','min','max']))
         
     k=[g1,g2]
 
