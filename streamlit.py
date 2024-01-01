@@ -229,8 +229,8 @@ if choice== "📋Basic Information And Statistics":
 
     g,p=group(df[[g1,g2,val]],k,agg)  
     st.dataframe(g)   
-    '''
     st.pyplot(drawpivot(p))
+    '''
 if choice == "📊General EDA":
     st.title('Exploratory Data analysis')
     st.image('https://th.bing.com/th/id/OIP.I9CAlMorFphXUKDzzIVqRgHaD4?rs=1&pid=ImgDetMain')
