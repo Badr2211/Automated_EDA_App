@@ -7,11 +7,12 @@ To run this app, you need to have Python 3 and Streamlit installed on your syste
 
 ```bash
 pip install streamlit
-
+```
 Then, clone this repository to your local machine, and navigate to the project folder. To launch the app, run the following command:
 
+```
 streamlit run app.py 
-
+```
 This will open the app in your default browser.
 
 Usage
