@@ -159,6 +159,7 @@ def group(data, g_based,agg):
     # Perform groupby and calculate multiple aggregations
     g = data.groupby(g_based, as_index=False).agg(fun[agg])
     # Create pivot table
+    g = g.astype(str)
     pivot = g.pivot(index=g_based[0],columns=g_based[1])
     return g , pivot
 
