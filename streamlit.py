@@ -9,7 +9,7 @@ from pandas.plotting import scatter_matrix
 
 # Ignore all warnings
 warnings.filterwarnings("ignore")
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=600)
 
 # Now you can execute your code without being bothered by warnings
 
