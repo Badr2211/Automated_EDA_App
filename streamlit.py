@@ -159,7 +159,7 @@ def group(data, g_based,agg):
     # Perform groupby and calculate multiple aggregations
     g = data.groupby(g_based, as_index=False).agg(fun[agg])
     # Create pivot table
-    g = g.astype(str)
+    
     pivot = g.pivot(index=g_based[0],columns=g_based[1])
     return g , pivot
 
@@ -214,6 +214,7 @@ if choice== "📋Basic Information And Statistics":
     st.dataframe(df.describe())
     
     st.header('4-Groupby & Pinvot Plot')
+    '''
     col1 ,col2,col3,col4 =st.columns([.5,.5,.5,.5])
     with col1:
         g1=st.selectbox("1-Select categotical featue 1",cat_f )
@@ -228,7 +229,7 @@ if choice== "📋Basic Information And Statistics":
 
     g,p=group(df[[g1,g2,val]],k,agg)  
     st.dataframe(g)   
-    
+    '''
     st.pyplot(drawpivot(p))
 if choice == "📊General EDA":
     st.title('Exploratory Data analysis')
