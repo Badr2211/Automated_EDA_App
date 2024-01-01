@@ -217,7 +217,7 @@ if choice== "📋Basic Information And Statistics":
     st.dataframe(df.describe())
     
     st.header('4-Groupby & Pinvot Plot')
-    '''
+    
     col1 ,col2,col3,col4 =st.columns([.5,.5,.5,.5])
     with col1:
         g1=st.selectbox("1-Select categotical featue 1",cat_f )
@@ -233,7 +233,7 @@ if choice== "📋Basic Information And Statistics":
     g,p=group(df[[g1,g2,val]],k,agg)  
     st.dataframe(g)   
     st.pyplot(drawpivot(p))
-    '''
+    
 if choice == "📊General EDA":
     st.title('Exploratory Data analysis')
     st.image('https://th.bing.com/th/id/OIP.I9CAlMorFphXUKDzzIVqRgHaD4?rs=1&pid=ImgDetMain')
