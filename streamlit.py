@@ -192,6 +192,7 @@ with st.sidebar:
     file = st.file_uploader("Upload Your Dataset To exlore it and make easy interactive dashboard ,By Defult Churn Data-Set is uploaded ")
 
     df = load_data(file)
+    df=clean(df,df.index)
     cat_f= cat(df)
     num_f=num(df)
     target=st.selectbox("Target Column:",df.columns[::-1])
