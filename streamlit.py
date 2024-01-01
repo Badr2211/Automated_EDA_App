@@ -42,12 +42,15 @@ def load_data (path):
 #Explore each feature 
 def feature_insight(df,target):
     df_unique = pd .DataFrame([[
-                    i,df[i].unique(),
-                    df[i].dtypes,
+                    i,
+                    #df[i].unique(),
+                    #df[i].dtypes,
                     df[i].corr(df[target]) if ( df[i].dtypes != 'object' and  df[target].dtypes != 'object') else None,
                     df[i].isna().sum(),
                     len(df[i].unique())] 
-                    for i in df.columns],columns=['Feature','Unique Values','dtype','Corr with target','N.null','N.of unique values']).set_index('Feature')
+                    for i in df.columns],columns=['Feature',
+                                                  #'Unique Values','dtype',
+                                                  'Corr with target','N.null','N.of unique values']).set_index('Feature')
     return df_unique.T
 
 #Clean data
