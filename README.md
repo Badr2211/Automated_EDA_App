@@ -28,8 +28,12 @@ You can install Streamlit with the following command:
 
 first thing you must open .envy file and assign your Google_API_KEy
 
+'''
+cd src
+'''
+
 ```bash
-pip install streamlit
+pip install -r requirements.txt
 ```
 Then, clone this repository to your local machine, and navigate to the project folder. To launch the app, run the following command:
 
