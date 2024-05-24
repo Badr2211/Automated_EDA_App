@@ -28,9 +28,9 @@ You can install Streamlit with the following command:
 
 first thing you must open .envy file and assign your Google_API_KEy
 
-'''
+```
 cd src
-'''
+```
 
 ```bash
 pip install -r requirements.txt
